@@ -1,9 +1,9 @@
 const { User, validatePost, validatePut } = require('../models/user')
 const express = require('express')
 const _ = require('lodash')
+const bcrypt = require('bcrypt')
 const router = express.Router()
 router.use(express.json())
-
 
 
 router.get('/', async (req, res) => {
@@ -15,8 +15,12 @@ router.post('/', async (req, res) => {
     const result = await validatePost(req.body)
     if (result.error) return res.status(400).json({ error: result.error.message })
     const user = new User(_.pick(req.body, ['username', 'email', 'password']))
-    const createdUser = await user.save()
-    return res.send(_.pick(createdUser, ['username', 'email']))
+
+    const salt = await bcrypt.genSalt(10)
+    user.password = await bcrypt.hash(user.password, salt)
+    user.save()
+
+    return res.send(_.pick(user, ['username', 'email']))
 })
 
 router.get('/:username', async (req, res) => {
