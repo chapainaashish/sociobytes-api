@@ -6,12 +6,6 @@ const auth = require('../middlewares/auth')
 const router = express.Router()
 router.use(express.json())
 
-
-router.get('/', auth, async (req, res) => {
-    const user = await User.find({}, 'username email -_id').sort({ _id: -1 })
-    return res.send(user)
-})
-
 router.post('/', async (req, res) => {
     const result = await validatePost(req.body)
     if (result.error) return res.status(400).json({ error: result.error.message })
