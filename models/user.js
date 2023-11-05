@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
 })
 
 userSchema.methods.generateToken = function () {
-    const token = jwt.sign({ username: this.username }, "thisprivatekeyshouldbeaddedinENVVAR")
+    const token = jwt.sign({ _id: this._id }, "thisprivatekeyshouldbeaddedinENVVAR")
     return token
 }
 
