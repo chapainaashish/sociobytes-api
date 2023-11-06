@@ -1,9 +1,10 @@
 const mongoose = require('mongoose')
+const logger = require('./logger')
 
 function connectDB() {
     mongoose.connect('mongodb://localhost/sociobytes')
-        .then(() => console.log("MongoDB Connected Successfully"))
-        .catch((err) => console.error(err.message, err))
+        .then(() => logger.info("MongoDB Connected Successfully"))
+        .catch((err) => logger.error(err.message, err))
 }
 
 module.exports = connectDB
