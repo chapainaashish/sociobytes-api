@@ -13,6 +13,12 @@ const logger = winston.createLogger({
         new winston.transports.Console(),
         new winston.transports.File({ filename: 'logs/log_file.log', level: 'info' }),
     ],
+    exceptionHandlers: [
+        new winston.transports.File({ filename: 'logs/exception.log' }),
+    ],
+    rejectionHandlers: [
+        new winston.transports.File({ filename: 'logs/rejections.log' }),
+    ],
 });
 
 module.exports = logger

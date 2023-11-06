@@ -1,0 +1,12 @@
+[2023-11-06 01:06:39.340 PM] error: 	unhandledRejection: An uncaught error
+Error: An uncaught error
+    at /home/aashish/Documents/sociobytes-api/routes/user.js:25:11
+    at Layer.handle [as handle_request] (/home/aashish/Documents/sociobytes-api/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/aashish/Documents/sociobytes-api/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/home/aashish/Documents/sociobytes-api/node_modules/express/lib/router/route.js:114:3)
+    at Layer.handle [as handle_request] (/home/aashish/Documents/sociobytes-api/node_modules/express/lib/router/layer.js:95:5)
+    at /home/aashish/Documents/sociobytes-api/node_modules/express/lib/router/index.js:284:15
+    at param (/home/aashish/Documents/sociobytes-api/node_modules/express/lib/router/index.js:365:14)
+    at param (/home/aashish/Documents/sociobytes-api/node_modules/express/lib/router/index.js:376:14)
+    at Function.process_params (/home/aashish/Documents/sociobytes-api/node_modules/express/lib/router/index.js:421:3)
+    at next (/home/aashish/Documents/sociobytes-api/node_modules/express/lib/router/index.js:280:10)
