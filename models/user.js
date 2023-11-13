@@ -20,8 +20,6 @@ const User = new mongoose.model('User', userSchema)
 const complexityOptions = {
     min: 8,
     max: 255,
-    numeric: 1,
-    symbol: 1,
 };
 
 
