@@ -80,6 +80,12 @@ describe('api/user', () => {
             expect(res.status).toBe(200)
             expect(res.body).toHaveProperty('username', user.username)
         })
+
+        it('should create user profile if user is valid', async () => {
+            const res = await request(server).post('/api/user').send(user)
+            const saved_user = await User.findOne({ username: user.username })
+            const profile = await Profile.findOne()
+        })
     })
 
 })
