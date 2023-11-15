@@ -97,4 +97,18 @@ describe('api/user', () => {
         })
     })
 
+    describe('GET /', () => {
+        it('should return 404 if user not exist', async () => {
+            const res = await request(server).get("/api/user/aashish")
+            expect(res.status).toBe(404)
+        })
+
+        it('should return 200 if user exist', async () => {
+            const saved_user = await new User(user).save()
+            const res = await request(server).get(`/api/user/${saved_user.username}`)
+            expect(res.status).toBe(200)
+            expect(res.body).toHaveProperty('username', saved_user.username)
+        })
+    })
+
 })
