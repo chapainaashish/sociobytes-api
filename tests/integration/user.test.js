@@ -111,4 +111,40 @@ describe('api/user', () => {
         })
     })
 
+    describe('PUT', () => {
+
+        it('should return 401 if token not provided', async () => {
+            const res = await request(server).put("/api/user/aashish").send(user)
+            expect(res.status).toBe(401)
+        })
+
+        it('should return 400 if invalid token is provided', async () => {
+            const res = await request(server).put("/api/user/aashish").set('x-auth-token', '1').send(user)
+            expect(res.status).toBe(400)
+        })
+
+        it('should return 400 if token is valid but user is unauthorized', async () => {
+            const saved_user = await new User(user).save()
+            const token = User().generateToken()
+            const res = await request(server).put(`/api/user/${saved_user.username}`).set('x-auth-token', token).send(user)
+            expect(res.status).toBe(400)
+        })
+
+        it('should return 400 if token is valid, authorized but data is invalid', async () => {
+            const saved_user = await new User(user).save()
+            const token = saved_user.generateToken()
+            const res = await request(server).put(`/api/user/${saved_user.username}`).set('x-auth-token', token).send(user)
+            expect(res.status).toBe(400)
+        })
+
+        it('should return 200 if token is valid, authorized and data is valid', async () => {
+            const saved_user = await new User(user).save()
+            const token = saved_user.generateToken()
+            user.username = 'aashish1'
+            delete user.email
+            const res = await request(server).put(`/api/user/${saved_user.username}`).set('x-auth-token', token).send(user)
+            expect(res.status).toBe(200)
+        })
+    })
+
 })
