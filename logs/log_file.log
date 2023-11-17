@@ -72,3 +72,17 @@
 [2023-11-13 07:33:06.676 PM] info: 	MongoDB Connected Successfully
 [2023-11-13 07:33:10.590 PM] info: 	MongoDB Connected Successfully
 [2023-11-13 07:33:21.059 PM] info: 	MongoDB Connected Successfully
+[2023-11-17 02:09:31.410 PM] error: 	connect ECONNREFUSED 127.0.0.1:27017 connect ECONNREFUSED 127.0.0.1:27017
+[2023-11-17 02:09:36.998 PM] info: 	MongoDB Connected Successfully
+[2023-11-17 02:10:16.921 PM] info: 	MongoDB Connected Successfully
+[2023-11-17 02:10:41.065 PM] info: 	MongoDB Connected Successfully
+[2023-11-17 02:12:56.767 PM] info: 	MongoDB Connected Successfully
+[2023-11-17 02:13:27.529 PM] info: 	MongoDB Connected Successfully
+[2023-11-17 02:13:51.452 PM] info: 	MongoDB Connected Successfully
+[2023-11-17 02:14:02.241 PM] info: 	MongoDB Connected Successfully
+[2023-11-17 02:16:37.283 PM] info: 	MongoDB Connected Successfully
+[2023-11-17 02:16:43.997 PM] info: 	MongoDB Connected Successfully
+[2023-11-17 02:16:51.877 PM] info: 	MongoDB Connected Successfully
+[2023-11-17 02:18:47.658 PM] info: 	MongoDB Connected Successfully
+[2023-11-17 02:19:01.482 PM] info: 	MongoDB Connected Successfully
+[2023-11-17 02:19:09.889 PM] info: 	MongoDB Connected Successfully

@@ -84,7 +84,16 @@ describe('api/user', () => {
         it('should create user profile if user is valid', async () => {
             const res = await request(server).post('/api/user').send(user)
             const saved_user = await User.findOne({ username: user.username })
-            const profile = await Profile.findOne()
+            const profile = await Profile.findOne({
+                user: saved_user._id.toHexString()
+            })
+            expect(saved_user._id.toHexString()).toEqual(profile.user.toHexString())
+
+        })
+
+        it('should return x-auth-token header if user is valid', async () => {
+            const res = await request(server).post('/api/user').send(user)
+            expect(res.headers['x-auth-token']).toBeDefined();
         })
     })
 
