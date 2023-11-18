@@ -147,4 +147,30 @@ describe('api/user', () => {
         })
     })
 
+    describe('DELETE', () => {
+        it('should return 401 if token not provided', async () => {
+            const res = await request(server).delete("/api/user/aashish")
+            expect(res.status).toBe(401)
+        })
+
+        it('should return 400 if invalid token is provided', async () => {
+            const res = await request(server).delete("/api/user/aashish").set('x-auth-token', '1')
+            expect(res.status).toBe(400)
+        })
+
+        it('should return 400 if token is valid but user is unauthorized', async () => {
+            const saved_user = await new User(user).save()
+            const token = User().generateToken()
+            const res = await request(server).delete(`/api/user/${saved_user.username}`).set('x-auth-token', token)
+            expect(res.status).toBe(400)
+        })
+
+        it('should return 200 if token is valid and user is authorized', async () => {
+            const saved_user = await new User(user).save()
+            const token = saved_user.generateToken()
+            const res = await request(server).delete(`/api/user/${saved_user.username}`).set('x-auth-token', token)
+            expect(res.status).toBe(200)
+        })
+    })
+
 })
