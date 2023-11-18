@@ -26,9 +26,11 @@ describe('api/profile', () => {
         })
 
         it('should return 200 if profile exist', async () => {
-            const saved_user = await new User(user).save()
-            const res = await request(server).get(`/api/profile/${saved_user.username}`)
+            const user_res = await request(server).post('/api/user').send(user)
+            const res = await request(server).get(`/api/profile/${user_res.body.username}`)
             expect(res.status).toBe(200)
+            expect(res.body).toHaveProperty('_id')
+
         })
     })
 
