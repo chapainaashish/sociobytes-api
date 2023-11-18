@@ -17,7 +17,7 @@ router.put('/:username', [auth, auth_plus], async (req, res) => {
     const user = await User.findOne({ username: req.params.username })
     const result = await validateProfile(req.body)
     if (result.error) return res.status(400).json({ error: result.error.message })
-    const profile = await Profile.updateOne({ user: req_user_id }, { $set: req.body })
+    const profile = await Profile.updateOne({ user: user }, { $set: req.body })
     return res.send(profile)
 })
 
