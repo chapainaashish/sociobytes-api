@@ -112,7 +112,6 @@ describe('api/user', () => {
     })
 
     describe('PUT', () => {
-
         it('should return 401 if token not provided', async () => {
             const res = await request(server).put("/api/user/aashish").send(user)
             expect(res.status).toBe(401)
