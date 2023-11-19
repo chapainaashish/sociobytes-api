@@ -4,7 +4,7 @@ function check_auth(req, res, next) {
     const token = req.header('x-auth-token')
     if (!token) return res.status(401).json({ error: "Access Denied, No token provided" })
     try {
-        const decoded_jwt_payload = jwt.verify(token, "thisprivatekeyshouldbeaddedinENVVAR")
+        const decoded_jwt_payload = jwt.verify(token, process.env.JWTPRIVATEKEY)
         req.user = decoded_jwt_payload
         next()
     }
